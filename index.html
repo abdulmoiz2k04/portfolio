@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Moiz - Web Developer & AI Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark-glass {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1s ease-out;
+        }
+        
+        .slide-in-top {
+            animation: slideInTop 1s ease-out;
+        }
+        
+        .slide-in-bottom {
+            animation: slideInBottom 1s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInTop {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideInBottom {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .pulse-border {
+            animation: pulseBorder 2s infinite;
+        }
+        
+        @keyframes pulseBorder {
+            0%, 100% { border-color: #667eea; }
+            50% { border-color: #764ba2; }
+        }
+        
+        .tile {
+            background: linear-gradient(145deg, #1a1a1a, #000000);
+            border: 1px solid #333;
+            box-shadow: 
+                inset 2px 2px 5px rgba(255, 255, 255, 0.1),
+                inset -2px -2px 5px rgba(0, 0, 0, 0.8),
+                0 4px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .tile:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .tile-left { 
+            animation: slideFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .tile-right { 
+            animation: slideFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .tile-top { 
+            animation: slideFromTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .tile-bottom { 
+            animation: slideFromBottom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        @keyframes slideFromLeft {
+            0% { 
+                transform: translateX(-100vw) rotateY(-90deg) rotateX(45deg) scale(0.8); 
+                opacity: 0;
+                box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.8);
+            }
+            70% {
+                transform: translateX(5%) rotateY(-10deg) rotateX(5deg) scale(1.05);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateX(0) rotateY(0deg) rotateX(0deg) scale(1); 
+                opacity: 1;
+                box-shadow: 
+                    inset 2px 2px 5px rgba(255, 255, 255, 0.1),
+                    inset -2px -2px 5px rgba(0, 0, 0, 0.8),
+                    0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        @keyframes slideFromRight {
+            0% { 
+                transform: translateX(100vw) rotateY(90deg) rotateX(45deg) scale(0.8); 
+                opacity: 0;
+                box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.8);
+            }
+            70% {
+                transform: translateX(-5%) rotateY(10deg) rotateX(5deg) scale(1.05);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateX(0) rotateY(0deg) rotateX(0deg) scale(1); 
+                opacity: 1;
+                box-shadow: 
+                    inset 2px 2px 5px rgba(255, 255, 255, 0.1),
+                    inset -2px -2px 5px rgba(0, 0, 0, 0.8),
+                    0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        @keyframes slideFromTop {
+            0% { 
+                transform: translateY(-100vh) rotateX(-90deg) rotateY(45deg) scale(0.8); 
+                opacity: 0;
+                box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.8);
+            }
+            70% {
+                transform: translateY(5%) rotateX(-10deg) rotateY(5deg) scale(1.05);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1); 
+                opacity: 1;
+                box-shadow: 
+                    inset 2px 2px 5px rgba(255, 255, 255, 0.1),
+                    inset -2px -2px 5px rgba(0, 0, 0, 0.8),
+                    0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        @keyframes slideFromBottom {
+            0% { 
+                transform: translateY(100vh) rotateX(90deg) rotateY(45deg) scale(0.8); 
+                opacity: 0;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            }
+            70% {
+                transform: translateY(-5%) rotateX(10deg) rotateY(5deg) scale(1.05);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1); 
+                opacity: 1;
+                box-shadow: 
+                    inset 2px 2px 5px rgba(255, 255, 255, 0.1),
+                    inset -2px -2px 5px rgba(0, 0, 0, 0.8),
+                    0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        .tile-glow {
+            position: relative;
+        }
+        
+        .tile-glow::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0;
+            animation: glowPulse 3s infinite;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.3; }
+        }
+        
+        .hero-text-appear {
+            animation: heroTextAppear 1s ease-out 2s forwards;
+        }
+        
+        @keyframes heroTextAppear {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect slide-in-top">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold gradient-text">Abdul Moiz</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-purple-400 transition-colors">Home</a>
+                    <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+                    <a href="#services" class="hover:text-purple-400 transition-colors">Services</a>
+                    <a href="#portfolio" class="hover:text-purple-400 transition-colors">Portfolio</a>
+                    <a href="#contact" class="hover:text-purple-400 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center bg-black relative overflow-hidden">
+        <!-- Animated Tiles Background -->
+        <div id="tiles-container" class="absolute inset-0 grid grid-cols-8 md:grid-cols-12 lg:grid-cols-16 gap-0">
+            <!-- Tiles will be generated by JavaScript -->
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h1 id="hero-text" class="text-5xl md:text-7xl font-bold mb-6 opacity-0">
+                    <span class="block text-white">Abdul Moiz</span>
+                    <span class="block text-3xl md:text-4xl gradient-text typing-animation">I Turn Coffee Into Code ☕</span>
+                </h1>
+                <p id="hero-subtitle" class="text-xl md:text-xl mb-8 max-w-3xl mx-auto text-gray-300 opacity-0">
+                    Web wizard who speaks fluent ReactJS and teaches websites to think with AI! 
+                    <br>No hosting bills, just pure digital magic within your budget!
+                </p>
+                <div id="hero-buttons" class="flex flex-col sm:flex-row gap-4 justify-center opacity-0">
+                    <a href="#portfolio" class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold hover:from-purple-600 hover:to-blue-600 transition-all hover-lift transform hover:scale-105">
+                        🎨 See My Magic
+                    </a>
+                    <a href="#contact" class="border-2 border-white px-8 py-4 rounded-full font-semibold text-white hover:bg-white hover:text-black transition-all hover-lift transform hover:scale-105">
+                        💡 Let's Build Something Epic
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">About Me</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Passionate web developer specializing in ReactJS/NextJS and AI integration, creating stunning websites that drive business growth.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h3 class="text-3xl font-bold mb-6 text-purple-400">My Expertise</h3>
+                    <p class="text-lg text-gray-300 mb-6">
+                        I transform businesses through intelligent web solutions, combining cutting-edge technology with stunning design. My focus is on delivering high-performance websites with AI capabilities that grow with your business.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>AI Integration Specialist</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>Zero Hosting Cost Solutions</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span>Custom Management Systems</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="dark-glass p-6 rounded-xl hover-lift">
+                            <i class="fas fa-code text-3xl text-purple-400 mb-4"></i>
+                            <h4 class="text-xl font-bold mb-2">Clean Code</h4>
+                            <p class="text-gray-400">Maintainable and scalable solutions</p>
+                        </div>
+                        <div class="dark-glass p-6 rounded-xl hover-lift">
+                            <i class="fas fa-mobile-alt text-3xl text-blue-400 mb-4"></i>
+                            <h4 class="text-xl font-bold mb-2">Responsive</h4>
+                            <p class="text-gray-400">Perfect on all devices</p>
+                        </div>
+                        <div class="dark-glass p-6 rounded-xl hover-lift">
+                            <i class="fas fa-robot text-3xl text-green-400 mb-4"></i>
+                            <h4 class="text-xl font-bold mb-2">AI Powered</h4>
+                            <p class="text-gray-400">Intelligent automation</p>
+                        </div>
+                        <div class="dark-glass p-6 rounded-xl hover-lift">
+                            <i class="fas fa-rocket text-3xl text-red-400 mb-4"></i>
+                            <h4 class="text-xl font-bold mb-2">Fast Loading</h4>
+                            <p class="text-gray-400">Optimized performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Technical Skills</h2>
+                <p class="text-xl text-gray-300">Technologies I use to bring your ideas to life</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fab fa-react text-4xl text-blue-400 mb-4"></i>
+                        <h4 class="font-semibold">ReactJS</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fas fa-code text-4xl text-purple-400 mb-4"></i>
+                        <h4 class="font-semibold">NextJS</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fab fa-js-square text-4xl text-yellow-400 mb-4"></i>
+                        <h4 class="font-semibold">JavaScript</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fab fa-css3-alt text-4xl text-blue-500 mb-4"></i>
+                        <h4 class="font-semibold">TailwindCSS</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fab fa-github text-4xl text-gray-400 mb-4"></i>
+                        <h4 class="font-semibold">Git/GitHub</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fas fa-robot text-4xl text-green-400 mb-4"></i>
+                        <h4 class="font-semibold">AI Integration</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fab fa-aws text-4xl text-orange-400 mb-4"></i>
+                        <h4 class="font-semibold">AWS</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="800">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fab fa-google text-4xl text-red-400 mb-4"></i>
+                        <h4 class="font-semibold">Google Cloud</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="900">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fab fa-microsoft text-4xl text-blue-600 mb-4"></i>
+                        <h4 class="font-semibold">Azure</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="1000">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fas fa-database text-4xl text-green-500 mb-4"></i>
+                        <h4 class="font-semibold">MongoDB</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="1100">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fas fa-search text-4xl text-indigo-400 mb-4"></i>
+                        <h4 class="font-semibold">SEO/GEO</h4>
+                    </div>
+                </div>
+                <div class="text-center hover-lift" data-aos="zoom-in" data-aos-delay="1200">
+                    <div class="dark-glass p-6 rounded-xl">
+                        <i class="fas fa-paint-brush text-4xl text-pink-400 mb-4"></i>
+                        <h4 class="font-semibold">UX Design</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">My Services</h2>
+                <p class="text-xl text-gray-300">Comprehensive web solutions powered by AI</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="dark-glass p-8 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-code text-4xl text-purple-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">Custom Web Development</h3>
+                    <p class="text-gray-300 mb-6">Full-stack web applications using ReactJS/NextJS with modern design and optimal performance.</p>
+                    <ul class="text-sm text-gray-400 space-y-2">
+                        <li>• Responsive Design</li>
+                        <li>• Performance Optimization</li>
+                        <li>• SEO/GEO Implementation</li>
+                        <li>• Zero Hosting Costs</li>
+                    </ul>
+                </div>
+                
+                <div class="dark-glass p-8 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-robot text-4xl text-green-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">AI Integration</h3>
+                    <p class="text-gray-300 mb-6">Intelligent features including chatbots, automation, and AI-powered functionalities.</p>
+                    <ul class="text-sm text-gray-400 space-y-2">
+                        <li>• AI Chatbots</li>
+                        <li>• Appointment Scheduling</li>
+                        <li>• Content Generation</li>
+                        <li>• Process Automation</li>
+                    </ul>
+                </div>
+                
+                <div class="dark-glass p-8 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-cogs text-4xl text-blue-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">Management Systems</h3>
+                    <p class="text-gray-300 mb-6">Custom-built management platforms tailored to your business needs with full control.</p>
+                    <ul class="text-sm text-gray-400 space-y-2">
+                        <li>• Inventory Management</li>
+                        <li>• Customer Relations</li>
+                        <li>• Analytics Dashboard</li>
+                        <li>• Multi-user Access</li>
+                    </ul>
+                </div>
+                
+                <div class="dark-glass p-8 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-chart-line text-4xl text-red-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">SEO & Optimization</h3>
+                    <p class="text-gray-300 mb-6">Complete SEO and GEO optimization to ensure maximum visibility and performance.</p>
+                    <ul class="text-sm text-gray-400 space-y-2">
+                        <li>• Technical SEO</li>
+                        <li>• Core Web Vitals</li>
+                        <li>• Local SEO</li>
+                        <li>• Performance Monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="dark-glass p-8 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-link text-4xl text-yellow-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">API Integrations</h3>
+                    <p class="text-gray-300 mb-6">Seamless integration with third-party services and CRM systems like HubSpot.</p>
+                    <ul class="text-sm text-gray-400 space-y-2">
+                        <li>• CRM Integration</li>
+                        <li>• Payment Gateways</li>
+                        <li>• Social Media APIs</li>
+                        <li>• Custom Webhooks</li>
+                    </ul>
+                </div>
+                
+                <div class="dark-glass p-8 rounded-xl hover-lift" data-aos="fade-up" data-aos-delay="600">
+                    <i class="fas fa-mobile-alt text-4xl text-indigo-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">Progressive Web Apps</h3>
+                    <p class="text-gray-300 mb-6">Modern PWAs that work across all devices with app-like experiences.</p>
+                    <ul class="text-sm text-gray-400 space-y-2">
+                        <li>• Offline Functionality</li>
+                        <li>• Push Notifications</li>
+                        <li>• App Store Distribution</li>
+                        <li>• Native Performance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">My Portfolio</h2>
+                <p class="text-xl text-gray-300">Recent projects showcasing my expertise</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Real Estate Project -->
+                <div class="dark-glass rounded-xl overflow-hidden hover-lift" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                        <img src="Real Estate Website.png" alt="Real Estate Website" class="object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ruxton Property</h3>
+                        <a href="https://abdulmoiz2k04.github.io/ruxton-property/" class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                            <span>View Live Site</span>
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Cleaning Services Project -->
+                <div class="dark-glass rounded-xl overflow-hidden hover-lift" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                        <img src="Cleaning Service Website.png" alt="Cleaning Service Website" class="object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Above & Beyond</h3>
+                        <a href="https://abdulmoiz2k04.github.io/abovenbeyond/" class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                            <span>View Live Site</span>
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Pharmacy Project -->
+                <div class="dark-glass rounded-xl overflow-hidden hover-lift" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center">
+                        <img src="Pharmacy Website.png" alt="Pharmacy Website" class="object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ruxton Pharmacy</h3>
+                        <a href="https://abdulmoiz2k04.github.io/ruxtonpharm-web/" class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                            <span>View Live Site</span>
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Fitness Project -->
+                <div class="dark-glass rounded-xl overflow-hidden hover-lift" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                        <img src="Fitness Website.png" alt="Fitness Website" class="object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">PP Physique</h3>
+                        <a href="https://abdulmoiz2k04.github.io/ppphysique/" class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                            <span>View Live Site</span>
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Restaurant Project -->
+                <div class="dark-glass rounded-xl overflow-hidden hover-lift" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="h-48 bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center">
+                        <img src="Resturant Website.png" alt="Resturant Website" class="object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">On The Rise</h3>
+                        <a href="https://abdulmoiz2k04.github.io/ontherise/" class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                            <span>View Live Site</span>
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Real Estate Agent Project -->
+                <div class="dark-glass rounded-xl overflow-hidden hover-lift" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                        <img src="Real Estate Agent Website.png" alt="Real Estate Agent Website" class="object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Marney Kirk</h3>
+                        <a href="https://abdulmoiz2k04.github.io/marney-kirk-website/" class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                            <span>View Live Site</span>
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="dark-glass rounded-xl overflow-hidden hover-lift" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                        <img src="Real Estate Agent Website 2.png" alt="Real Estate Agent Website" class="object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Dorsey Campbell</h3>
+                        <a href="https://abdulmoiz2k04.github.io/dorsey-campbell-web/" class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                            <span>View Live Site</span>
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="dark-glass rounded-xl overflow-hidden hover-lift" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                        <img src="Real Estate Agent Website 3.png" alt="Real Estate Agent Website" class="object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Lisa Bullock</h3>
+                        <a href="https://abdulmoiz2k04.github.io/lisa-bullock-web/" class="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                            <span>View Live Site</span>
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Let's Build Something Amazing</h2>
+                <p class="text-xl text-gray-300">Tell me about your project and get a custom solution within your budget</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <form action="https://formspree.io/f/mdkdljbv" method="POST" class="space-y-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Your full name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400" placeholder="your.email@example.com">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400" placeholder="+1 (555) 123-4567">
+                        </div>
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Service Type *</label>
+                            <select id="service" name="service" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white">
+                                <option value="">Select a service</option>
+                                <option value="website-development">Website Development</option>
+                                <option value="ai-integration">AI Integration</option>
+                                <option value="management-system">Management System</option>
+                                <option value="seo-optimization">SEO Optimization</option>
+                                <option value="api-integration">API Integration</option>
+                                <option value="progressive-web-app">Progressive Web App</option>
+                                <option value="full-package">Complete Package</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="project-description" class="block text-sm font-medium text-gray-300 mb-2">Project Description *</label>
+                        <textarea id="project-description" name="project-description" rows="4" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Describe your project, goals, and requirements in detail..."></textarea>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="technologies" class="block text-sm font-medium text-gray-300 mb-2">Preferred Technologies</label>
+                            <textarea id="technologies" name="technologies" rows="3" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Any specific technologies, integrations, or tools you prefer..."></textarea>
+                        </div>
+                        <div>
+                            <label for="timeline" class="block text-sm font-medium text-gray-300 mb-2">Project Timeline</label>
+                            <select id="timeline" name="timeline" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white">
+                                <option value="">Select timeline</option>
+                                <option value="1-2-weeks">1-2 weeks</option>
+                                <option value="3-4-weeks">3-4 weeks</option>
+                                <option value="1-2-months">1-2 months</option>
+                                <option value="2-3-months">2-3 months</option>
+                                <option value="3+ months">3+ months</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="budget" class="block text-sm font-medium text-gray-300 mb-2">Your Budget *</label>
+                        <input type="text" id="budget" name="budget" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Please specify your budget range (e.g., $500-1000, $2000-3000)">
+                        <p class="text-sm text-gray-400 mt-1">I work within your budget to deliver the best possible solution</p>
+                    </div>
+                    
+                    <div>
+                        <label for="additional-info" class="block text-sm font-medium text-gray-300 mb-2">Additional Information</label>
+                        <textarea id="additional-info" name="additional-info" rows="3" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Any other details, inspirations, or specific requirements..."></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="gradient-bg px-8 py-4 rounded-full font-semibold text-white hover:opacity-90 transition-all hover-lift pulse-border">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Project Details
+                        </button>
+                        <p class="text-sm text-gray-400 mt-4">I'll respond within 24 hours with a detailed proposal</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-3xl font-bold gradient-text mb-4">Abdul Moiz</div>
+                <p class="text-gray-400 mb-6">Web Developer & AI Specialist</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <!-- <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a> -->
+                    <a href="mailto:abdulmoizam12344@gmail.com" class="text-gray-400 hover:text-purple-400 transition-colors">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+                <div class="border-t border-gray-700 pt-8">
+                    <p class="text-gray-500 text-sm">
+                        © 2025 Abdul Moiz. All rights reserved. | Building intelligent web solutions that grow your business.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create tiles animation for hero section
+        function createTilesAnimation() {
+            const container = document.getElementById('tiles-container');
+            const cols = window.innerWidth > 1024 ? 20 : window.innerWidth > 768 ? 15 : 10;
+            const rows = Math.ceil(window.innerHeight / (window.innerWidth / cols));
+            
+            container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            container.innerHTML = '';
+            
+            for (let i = 0; i < rows * cols; i++) {
+                const tile = document.createElement('div');
+                tile.className = 'tile';
+                tile.style.height = `${window.innerHeight / rows}px`;
+                
+                const row = Math.floor(i / cols);
+                const col = i % cols;
+                
+                // Determine animation direction based on position with more variety
+                if (row === 0) {
+                    tile.classList.add('tile-top');
+                } else if (row === rows - 1) {
+                    tile.classList.add('tile-bottom');
+                } else if (col === 0) {
+                    tile.classList.add('tile-left');
+                } else if (col === cols - 1) {
+                    tile.classList.add('tile-right');
+                } else {
+                    // For middle tiles, create waves from edges
+                    const distanceFromEdge = Math.min(row, rows - 1 - row, col, cols - 1 - col);
+                    const directions = ['tile-top', 'tile-bottom', 'tile-left', 'tile-right'];
+                    
+                    if (distanceFromEdge <= 2) {
+                        // Tiles close to edges follow edge direction
+                        if (row <= 2) tile.classList.add('tile-top');
+                        else if (row >= rows - 3) tile.classList.add('tile-bottom');
+                        else if (col <= 2) tile.classList.add('tile-left');
+                        else tile.classList.add('tile-right');
+                    } else {
+                        // Random for center tiles
+                        tile.classList.add(directions[Math.floor(Math.random() * directions.length)]);
+                    }
+                }
+                
+                // Add staggered delay based on distance from edges for wave effect
+                const edgeDistance = Math.min(row, rows - 1 - row, col, cols - 1 - col);
+                const baseDelay = edgeDistance * 0.1;
+                const randomDelay = Math.random() * 0.3;
+                tile.style.animationDelay = `${baseDelay + randomDelay}s`;
+                
+                // Add random glow effect to some tiles
+                if (Math.random() < 0.1) {
+                    tile.classList.add('tile-glow');
+                }
+                
+                container.appendChild(tile);
+            }
+            
+            // Show hero text after tiles animation completes
+            setTimeout(() => {
+                document.getElementById('hero-text').classList.add('hero-text-appear');
+                setTimeout(() => {
+                    document.getElementById('hero-subtitle').classList.add('hero-text-appear');
+                }, 400);
+                setTimeout(() => {
+                    document.getElementById('hero-buttons').classList.add('hero-text-appear');
+                }, 800);
+            }, 2500);
+        }
+        
+        // Initialize tiles animation on page load
+        window.addEventListener('load', createTilesAnimation);
+        window.addEventListener('resize', createTilesAnimation);
+
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.md\\:hidden button');
+        const nav = document.querySelector('nav .hidden.md\\:flex');
+        
+        if (menuBtn && nav) {
+            menuBtn.addEventListener('click', () => {
+                nav.classList.toggle('hidden');
+            });
+        }
+
+        // Form submission handling
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            // You can add additional form validation here if needed
+            console.log('Form submitted');
+        });
+
+        // Typing animation for hero text
+        const typingText = document.querySelector('.typing-animation');
+        if (typingText) {
+            const texts = [
+                'I Turn Coffee Into Code ☕', 
+                'ReactJS Magician 🎩', 
+                'AI Whisperer 🤖', 
+                'Bug Terminator 🐛💥',
+                'Digital Dream Builder 💭✨'
+            ];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function typeWriter() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    typingText.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingText.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                if (!isDeleting && charIndex === currentText.length) {
+                    setTimeout(() => isDeleting = true, 3000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                }
+
+                setTimeout(typeWriter, isDeleting ? 50 : 100);
+            }
+
+            // Start typing animation after hero text appears
+            setTimeout(typeWriter, 3500);
+        }
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(17, 24, 39, 0.95)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
