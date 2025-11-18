@@ -470,6 +470,226 @@
             left: 100%;
         }
         
+        .testimonials-section {
+            background: radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.12), transparent 55%),
+                        radial-gradient(circle at 80% 0%, rgba(236, 72, 153, 0.12), transparent 50%),
+                        linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 15, 24, 0.95));
+        }
+        
+        .testimonials-aurora {
+            position: absolute;
+            inset: 0;
+            background: conic-gradient(from 180deg at 50% 50%, rgba(102, 126, 234, 0.25), rgba(236, 72, 153, 0.25), rgba(14, 165, 233, 0.2), rgba(102, 126, 234, 0.25));
+            filter: blur(120px);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .testimonials-noise {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h80v80H0zM80 80h80v80H80z'/%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+        
+        .testimonial-card {
+            position: relative;
+            padding: 2.5rem;
+            border-radius: 2.5rem;
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(88, 28, 135, 0.4));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.6);
+            overflow: hidden;
+        }
+        
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15), transparent 55%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .testimonial-card:hover::after {
+            opacity: 1;
+        }
+        
+        .testimonial-floating-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #bfdbfe;
+        }
+        
+        .testimonial-quote-mark {
+            font-size: clamp(4rem, 8vw, 6rem);
+            line-height: 0.6;
+            color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .testimonial-quote {
+            font-size: clamp(1.25rem, 2vw, 1.75rem);
+            line-height: 1.7;
+            color: #f8fafc;
+        }
+        
+        .testimonial-body {
+            color: #cbd5f5;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-avatar {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 1.4rem;
+            background: linear-gradient(135deg, #9333ea, #2563eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+        }
+        
+        .testimonial-trust-pill {
+            margin-left: auto;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.75rem;
+            color: #cbd5f5;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .testimonial-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .testimonial-highlight-card {
+            padding: 2rem;
+            border-radius: 1.75rem;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-highlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15), transparent 60%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        
+        .testimonial-highlight-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-highlight-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+        
+        .testimonial-highlight {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.9rem 1.2rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+        }
+        
+        .testimonial-highlight i {
+            color: #a78bfa;
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-score-card {
+            padding: 1.8rem;
+            border-radius: 1.75rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0 0 40px rgba(59, 130, 246, 0.15);
+        }
+        
+        .testimonial-score {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .testimonial-stars {
+            display: flex;
+            gap: 0.2rem;
+            color: #fcd34d;
+        }
+        
+        .testimonial-spark {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 40%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent 65%);
+            animation: orbit 18s linear infinite;
+        }
+        
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translate(0, 0); }
+            50% { transform: rotate(180deg) translate(10px, -20px); }
+            100% { transform: rotate(360deg) translate(0, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .testimonial-card,
+            .testimonial-highlight-card,
+            .testimonial-score-card {
+                padding: 1.8rem;
+            }
+            
+            .testimonial-meta {
+                flex-wrap: wrap;
+            }
+            
+            .testimonial-trust-pill {
+                margin-left: 0;
+            }
+        }
+        
         .contact-form-field {
             position: relative;
         }
@@ -2052,7 +2272,99 @@
             </div>
         </div>
     </section>
-
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-32 relative overflow-hidden testimonials-section">
+        <div class="testimonials-aurora"></div>
+        <div class="testimonials-noise"></div>
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="testimonial-spark" style="top: 10%; left: 15%;"></div>
+            <div class="testimonial-spark" style="bottom: 15%; right: 10%; animation-delay: 4s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="project-badge">Testimonials</span>
+                <span class="text-gray-500">|</span>
+                <span class="text-gray-400 text-sm">Client Stories</span>
+            </div>
+            <div class="mb-16 grid lg:grid-cols-2 gap-8 items-end">
+                <div data-aos="fade-right">
+                    <p class="text-sm uppercase tracking-[0.3em] text-gray-400 mb-4">Partner Experience</p>
+                    <h2 class="display-font section-title text-white leading-tight">Proof that our builds boost real businesses</h2>
+                </div>
+                <p class="text-gray-300 text-lg" data-aos="fade-left">
+                    Every launch is backed by a tight feedback loop with our clients. We obsess over clarity, speed, and outcomes—so each testimonial becomes a growth story for the brands we collaborate with.
+                </p>
+            </div>
+            
+            <!-- Horizontal Scrollable Testimonials -->
+            <div class="testimonials-scroll-container">
+                <div class="testimonials-scroll-wrapper">
+                    
+                    <!-- Testimonial Card 1 -->
+                    <div class="testimonial-card-wrapper" data-aos="fade-up" data-aos-delay="100">
+                        <div class="testimonial-card">
+                            <span class="testimonial-floating-chip">
+                                <i class="fas fa-circle text-[6px]"></i>
+                                Client Spotlight
+                            </span>
+                            <div class="testimonial-quote-mark">"</div>
+                            <p class="testimonial-quote mb-6">
+                                Working with Abdul from Dev by AM has been one of the smoothest experiences I've had in web development. He's professional, extremely fast, and goes out of his way to make sure every detail is perfect.
+                            </p>
+                            <p class="testimonial-body mb-10">
+                                If you're looking for a developer who's reliable, skilled, and operates with integrity, we couldn't recommend Dev by AM more.
+                            </p>
+                            <div class="testimonial-meta">
+                                <div class="testimonial-avatar">E</div>
+                                <div>
+                                    <p class="text-white font-semibold">Daniel Espinosa</p>
+                                    <p class="text-gray-400 text-sm">Founder, Espinosa Physiques</p>
+                                </div>
+                                <span class="testimonial-trust-pill">Launch partner</span>
+                            </div>
+                        </div>
+                        
+                        <!-- What Impressed Us - Part of Testimonial -->
+                        <div class="testimonial-highlight-card mt-5 mb-5">
+                            <p class="text-sm uppercase tracking-[0.3em] text-gray-400">What impressed us</p>
+                            <h3 class="text-2xl text-white font-semibold mt-2 mb-6">The Dev by AM difference</h3>
+                            <div class="testimonial-highlight-list">
+                                <div class="testimonial-highlight">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Speed without compromising quality</span>
+                                </div>
+                                <div class="testimonial-highlight">
+                                    <i class="fas fa-arrow-trend-up"></i>
+                                    <span>Goes above and beyond the original scope</span>
+                                </div>
+                                <div class="testimonial-highlight">
+                                    <i class="fas fa-comments"></i>
+                                    <span>Clear communication & consistent updates</span>
+                                </div>
+                                <div class="testimonial-highlight">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Genuinely invested in the outcome</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add more testimonial cards here -->
+                    <!-- Copy the entire testimonial-card-wrapper div above to add new testimonials -->
+                    
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator
+            <div class="scroll-indicator pl-3">
+                <i class="fas fa-chevron-right"></i>
+                <span>Scroll to see more</span>
+            </div> -->
+        </div>
+    </section>
+    
     <!-- Contact Section -->
     <section id="contact" class="py-32 relative overflow-hidden">
         <div class="section-gradient-overlay"></div>
